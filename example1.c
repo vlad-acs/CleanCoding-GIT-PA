@@ -115,16 +115,16 @@ void DFS(GRAPH *graph, STACK *stack, int node)
 void can_be_reached(GRAPH *graph) // 0 sau 1 daca poate fi sau nu ajuns
 {
     int nodeCount = graph->size;
-    STACK *stack1 = create_stack(2 * nodeCount);
-    STACK *stack2 = create_stack(2 * nodeCount);
     
     for (int i = 1; i < nodeCount; i++) // aici i tine loc de numar adica de restaurant {for (int j = 0; j < 5; j++)}
     {
+        STACK *stack1 = create_stack(2 * nodeCount);
         DFS(graph, stack1, i);
         wipe_visited(graph);
         
         for (int j = i+1; j <= nodeCount; j++)
         {
+            STACK *stack2 = create_stack(2 * nodeCount);
             DFS(graph, stack2, j);
             wipe_visited(graph);
 
